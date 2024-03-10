@@ -13,6 +13,39 @@ public class AdminDaoimpl1 implements AdminDao
 	String url="jdbc:mysql://localhost:3306/teca54_advance_java_project?user=root&password=12345";
 	static CustomerInfo customerInfo = new CustomerInfo();
 
+	
+	public void adminLogIn(String emailId,String password)
+	{
+		String select="select * from admin where adminEmail=? and adminPassword=?";
+		
+		
+		try {
+			Connection	connection = DriverManager.getConnection(url);
+			 PreparedStatement ps= connection.prepareStatement(select);
+		        ps.setString(1, emailId);
+		        ps.setString(2, password);
+		        
+		        ResultSet  resultSet = ps.executeQuery();
+		        
+		        if(resultSet.isBeforeFirst())
+             {
+            	 System.out.println("Admin LogIn Successfull");
+	         }
+		        else
+		        {
+		        	System.err.println("Invalid EmailId and Password");
+		        }
+
+	
+		}
+		catch (SQLException e) {
+			
+			e.printStackTrace();
+		}
+		
+       
+         
+}
 	public void deleteCustomerBasedOnPhoneNumber(String mobileNumber) {
 		 
 		 String delete="delete from customer_info where customer_mobile_number=?";
