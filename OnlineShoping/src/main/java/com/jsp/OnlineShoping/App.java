@@ -73,7 +73,14 @@ import com.jsp.OnlineShoping.model.Products;
         	  
         	  case 2:
         	  {
-        		  System.out.println("Admin LogIn");
+        		   System.out.println("Enter email id : ");
+        		  String emailId=sc.next();
+        		  
+        		  System.out.println("Enter password : ");
+        		  String password=sc.next();
+        		  
+        		  ad.adminLogIn(emailId, password);
+        		  
         		  
         		  break;  
         	  }
